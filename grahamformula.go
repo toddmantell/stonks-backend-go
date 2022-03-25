@@ -1,6 +1,6 @@
-package stonksbackend
+package main
 
-type result struct {
+type Result struct {
 	highGrahamFormulaNumber             float64
 	highConservativeGrahamFormulaNumber float64
 	lowGrahamFormulaNumber              float64
@@ -12,12 +12,12 @@ const CONSERVATIVE_PE = 7
 const REGULAR_GROWTH_MULTIPLE = 2
 const CONSERVATIVE_GROWTH_MULTIPLE = 1
 
-func GrahamFormula(lowGrowthRate float64, highGrowthRate float64, ttmEPS float64) result {
+func GrahamFormula(lowGrowthRate float64, highGrowthRate float64, ttmEPS float64) Result {
 	high := calcGrahamFormula(highGrowthRate, ttmEPS, REGULAR_PE, REGULAR_GROWTH_MULTIPLE)
 	highConservative := calcGrahamFormula(highGrowthRate, ttmEPS, CONSERVATIVE_PE, CONSERVATIVE_GROWTH_MULTIPLE)
 	low := calcGrahamFormula(lowGrowthRate, ttmEPS, REGULAR_PE, REGULAR_GROWTH_MULTIPLE)
 	lowConservative := calcGrahamFormula(lowGrowthRate, ttmEPS, CONSERVATIVE_PE, CONSERVATIVE_GROWTH_MULTIPLE)
-	r := result{
+	r := Result{
 		highGrahamFormulaNumber:             high,
 		highConservativeGrahamFormulaNumber: highConservative,
 		lowGrahamFormulaNumber:              low,
